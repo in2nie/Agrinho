@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irmãos da Terra - Sustentabilidade Ninja</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-overlay"></div>
+        <div class="container header-content">
+            <button id="btn-modo" onclick="alternarModo()">☁️ Ativar Modo Akatsuki ☁️</button>
+            <h1 id="main-title">Agro Forte, Futuro Sustentável</h1>
+            <p id="main-subtitle">Você sabia que o Paraná tem liderado grandes avanços na conservação ambiental? Clique nos pergaminhos abaixo e descubra os dados reais que provam a força das nossas florestas e do nosso solo!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="introducao">
+            <h2 id="intro-title">A Vontade do Fogo Verde</h2>
+            <p id="intro-text">No universo dos ninjas, existe uma filosofia poderosa chamada <strong>"A Vontade do Fogo"</strong>: a compreensão de que o amor, a união e a proteção devem ser cultivados hoje para as próximas gerações. No mundo real, o agronegócio paranaense segue uma missão parecida. Para garantir um Agro Forte e um Futuro Sustentável, usamos a "Vontade do Fogo Verde", o compromisso de produzir alimentos mantendo o equilíbrio com o meio ambiente. Preservar o solo e proteger as florestas é o nosso "jutsu" de defesa mais importante.</p>
+        </section>
+
+        <section class="pilares">
+            <div class="card" onclick="abrirModal('madeira')">
+                <h3 id="pilar1-title">🌳 Mokuton: Estilo Madeira</h3>
+                <p id="pilar1-text">O verdadeiro poder do Estilo Madeira está na convivência harmônica entre a produção e as árvores. Clique para ver os dados do Paraná.</p>
+                <span class="clique-aqui">Clique para abrir 📜</span>
+            </div>
+
+            <div class="card" onclick="abrirModal('terra')">
+                <h3 id="pilar2-title">🚜 Doton: Estilo Terra</h3>
+                <p id="pilar2-text">Um ninja sabe que sua força vem da terra. O Plantio Direto cria uma verdadeira "armadura de chakra" no solo. Clique para ver os dados.</p>
+                <span class="clique-aqui">Clique para abrir 📜</span>
+            </div>
+
+            <div class="card" onclick="abrirModal('mapa')">
+                <h3 id="pilar3-title">🗺️ O Mapa do Domínio Ninja</h3>
+                <p id="pilar3-text">Para proteger a vila, usamos mapas de satélite e o CAR para monitorar a propriedade em tempo real. Clique para ver os dados.</p>
+                <span class="clique-aqui">Clique para abrir 📜</span>
+            </div>
+        </section>
+
+        <section id="quiz-container" class="quiz-container">
+            <h2>⚔️ Teste de Sobrevivência: Quiz Ninja Ambiental</h2>
+            <p>Mostre que você tem o conhecimento necessário para se tornar um Jonin da Sustentabilidade!</p>
+            
+            <div id="quiz-box">
+                <div id="pergunta-texto">Carregando pergaminho de perguntas...</div>
+                
+                <div class="quiz-botoes" id="botoes-quiz">
+                    <button class="btn-resposta btn-verdadeiro" onclick="verificarResposta(true)">Verdadeiro</button>
+                    <button class="btn-resposta btn-falso" onclick="verificarResposta(false)">Falso</button>
+                </div>
+                
+                <div id="quiz-feedback"></div>
+                <div id="quiz-placar">Chakra Verde: <span id="pontos-player">0</span> | Akatsuki: <span id="pontos-akatsuki">0</span></div>
+            </div>
+
+            <div id="quiz-transicao" style="display: none; margin-top: 30px;">
+                <p style="font-size: 1.3rem; font-weight: bold; color: var(--texto-secundario);">Que tal enfrentar mais um desafio? Faça uma Coleta Seletiva rápida!</p>
+                <button id="btn-ir-coleta" onclick="iniciarColeta()">Clique aqui!</button>
+            </div>
+        </section>
+
+        <section id="coleta-game" class="quiz-container" style="display: none;">
+            <h2>♻️ Jutsu de Selamento: Coleta Seletiva</h2>
+            <p>Selecione o destino correto para cada resíduo e purifique a vila!</p>
+            
+            <div id="item-coleta-box">
+                <div id="emoji-item" style="font-size: 5rem; margin: 20px 0;">🍌</div>
+                <p id="nome-item" style="font-weight: bold;">Casca de Banana</p>
+            </div>
+
+            <div class="coleta-botoes">
+                <button class="btn-coleta btn-reciclar" onclick="jogarColeta('reciclavel')">♻️ Reciclagem</button>
+                <button class="btn-coleta btn-compostar" onclick="jogarColeta('compostagem')">🌿 Orgânico</button>
+                <button class="btn-coleta btn-comum" onclick="jogarColeta('comum')">🗑️ Comum</button>
+            </div>
+            
+            <div id="coleta-feedback" style="margin-top: 15px; font-weight: bold; min-height: 25px;"></div>
+            <p id="coleta-placar">Itens Purificados: <span id="pontos-coleta">0</span></p>
+        </section>
+
+    </main>
+
+    <div id="modal-madeira" class="modal-fundo" onclick="fecharModal('madeira')">
+        <div class="modal-conteudo" onclick="event.stopPropagation()">
+            <span class="fechar" onclick="fecharModal('madeira')">&times;</span>
+            <h2 id="modal-madeira-titulo">Dados do Estilo Madeira (Florestas)</h2>
+            <div id="modal-madeira-texto"></div>
+        </div>
+    </div>
+
+    <div id="modal-terra" class="modal-fundo" onclick="fecharModal('terra')">
+        <div class="modal-conteudo" onclick="event.stopPropagation()">
+            <span class="fechar" onclick="fecharModal('terra')">&times;</span>
+            <h2 id="modal-terra-titulo">Dados do Estilo Terra (Solo)</h2>
+            <div id="modal-terra-texto"></div>
+        </div>
+    </div>
+
+    <div id="modal-mapa" class="modal-fundo" onclick="fecharModal('mapa')">
+        <div class="modal-conteudo" onclick="event.stopPropagation()">
+            <span class="fechar" onclick="fecharModal('mapa')">&times;</span>
+            <h2 id="modal-mapa-titulo">Dados do Mapa Ninja (Tecnologia)</h2>
+            <div id="modal-mapa-texto"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Concurso Agrinho - Cultivando um Futuro Sustentável</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
